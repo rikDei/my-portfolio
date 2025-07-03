@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Source+Code+Pro&display=swap');
+@import "tailwindcss";
+
+@theme {
+    --color-primary: #0A3459;
+    --color-primary-light: #2694BF;
+    --color-primary-dark: #0A2740;
+    --color-secondary: #8C6A56;
+    --color-secondary-dark: #401915;
+    --color-primary-red: #592222;
+    --color-secondary-red: #A64646;
+    --font-code: "Source Code Pro", monospace;
+}
