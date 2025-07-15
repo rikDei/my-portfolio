@@ -1,11 +1,13 @@
 ---
+import { Image } from "astro:assets";
+import heroImg from "./../assets/pexels-photo-234527.jpeg";
+
 const h1_text = "I'm Riccardo Deidda";
 const lastname = "Software Engineer, AI & Web Developer";
-const image_url = "https://images.pexels.com/photos/234527/pexels-photo-234527.jpeg";
 ---
 
 <div class="relative shadow-xl">
-    <img class="w-full" src={image_url} alt="background" />
+    <Image class="w-full" src={heroImg} alt="background" loading=eager />
     <div class="h-full w-full absolute top-30 flex flex-col-reverse justify-end items-end">
         <div class="flex flex-col items-end">
             <h1 class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-white tracking-widest font-light pr-4 sm:pr-6 md:pr-10">{h1_text}</h1>
