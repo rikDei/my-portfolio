@@ -1,0 +1,19 @@
+---
+import { Image } from "astro:assets";
+
+const { icon, name, description } = Astro.props;
+---
+
+<div
+  class="bg-zinc-100 h-70 w-45 rounded-xl grid grid-rows-2 place-items-center shadow-xl/40 shadow-zinc-300"
+>
+  <Image
+    class="mx-auto p-4 object-contain h-full w-full"
+    src={icon}
+    alt={`${name}-logo`}
+    loading="lazy"
+  />
+  <p class="text-zinc-600 mx-auto px-2 text-center font-code tracking-tight">
+    {description}
+  </p>
+</div>

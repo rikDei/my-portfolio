@@ -11,6 +11,4 @@ This website is built using the following technologies:
 
 ## 🌐 Live Demo
 
-You can view a live demo of this portfolio website, hosted on GitHub Pages, **[here](https://rikdei.github.io/my-portfolio/)**.
-
-The deployment is managed automatically via a GitHub Actions workflow (`.github/workflows/deploy.yml`).
+You can view a live demo of this portfolio website, hosted on Vercel, **[here](https://www.riccardodeidda.com/)**.
