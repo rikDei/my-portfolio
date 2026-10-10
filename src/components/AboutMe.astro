@@ -1,0 +1,74 @@
+---
+import { Image } from "astro:assets";
+import glow from "./../assets/about/glow.png";
+import PillViolet from "./../assets/about/pill-violet.svg";
+import PillYellow from "./../assets/about/pill-yellow.svg";
+import riccardo from "./../assets/about/riccardo.png";
+---
+
+<section
+  id="about"
+  class="bg-lilac relative flex justify-center overflow-hidden px-6 py-20 lg:py-[124px]"
+>
+  <Image
+    src={glow}
+    alt=""
+    aria-hidden="true"
+    width={770}
+    format="webp"
+    class="pointer-events-none absolute top-0 left-[-164px] h-[377px] w-[770px] max-w-none -scale-y-100 object-cover"
+  />
+  <Image
+    src={glow}
+    alt=""
+    aria-hidden="true"
+    width={770}
+    format="webp"
+    class="pointer-events-none absolute right-[-164px] bottom-[-88px] h-[377px] w-[770px] max-w-none -scale-x-100 object-cover"
+  />
+
+  <div
+    class="relative flex w-full flex-col items-center gap-12 lg:w-auto lg:flex-row lg:gap-[43px]"
+  >
+    <div class="relative h-[312px] w-[382px] shrink-0 max-sm:scale-90">
+      <div
+        class="absolute top-0 left-[55.6px] flex h-[312.467px] w-[276.328px] items-center justify-center"
+      >
+        <div
+          class="flex h-[290.447px] w-[250.412px] -rotate-[5.33deg] rounded-[6.28px] bg-white/50 pt-[9.42px] pr-[9.42px] pb-[10.205px] pl-[10.205px] shadow-[0_4px_24px_rgba(165,129,218,0.15)]"
+        >
+          <Image
+            src={riccardo}
+            alt="Riccardo Deidda"
+            width={542}
+            format="webp"
+            class="h-[270.822px] w-[230.787px] rounded-[6.28px] object-cover"
+          />
+        </div>
+      </div>
+      <div aria-hidden="true" class="absolute top-[56.17px] left-0">
+        <PillViolet />
+      </div>
+      <div aria-hidden="true" class="absolute top-[198.38px] left-[266.5px]">
+        <PillYellow />
+      </div>
+    </div>
+
+    <div class="text-ink font-lato w-full max-w-[494px]">
+      <h2
+        class="font-inter text-ink-strong text-4xl leading-[1.2] font-bold tracking-[0.48px] uppercase lg:text-[48px]"
+      >
+        About me
+      </h2>
+      <p class="mt-6 text-xl lg:text-2xl leading-[1.2]">
+        I'm a Software Engineer with a focus on <strong>AI</strong>{" "}
+        <br class="hidden lg:block" />and <strong>Web Development</strong>.
+      </p>
+      <p class="mt-[21.6px] text-lg leading-[1.2]">
+        I design and craft cutting-edge AI solutions, from state of the art
+        large language models to captivating computer vision applications,
+        deliver stunning websites.
+      </p>
+    </div>
+  </div>
+</section>
