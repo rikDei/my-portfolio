@@ -1,14 +1,91 @@
 ---
-const github_url = "https://github.com/rikDei?tab=repositories"
-const linkedin_url = "https://www.linkedin.com/in/riccardo-deidda-784080240/"
+import ArrowUpRight from "./../assets/footer/arrow-up-right.svg";
+import Dot from "./../assets/footer/dot.svg";
+import Pattern from "./../assets/footer/pattern.svg";
+import Logo from "./../assets/Logo.svg";
+
+const socials = [
+  { label: "GitHub", href: "https://github.com/rikDei" },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/riccardo-deidda-784080240/",
+  },
+];
+
+const legal = [
+  { label: "Privacy", href: "/privacy" },
+  { label: "Cookie Policy", href: "/cookie-policy" },
+];
+
+const linkClass = "transition-colors hover:text-white";
 ---
 
-<footer class="bg-linear-90 from-zinc-900 from-5% to-black text-white h-30 flex place-content-center-safe">
-    <div class="my-auto flex place-content-around gap-20 mx-10">
-        <p>© {new Date().getFullYear()} Portfolio. All rights reserved.</p>
-        <ul class="">
-            <li><a href={linkedin_url}>LinkedIn</a></li>
-            <li><a href={github_url}>Github</a></li>
-        </ul>
+<footer
+  class="bg-surface font-inter text-mist relative overflow-hidden px-6 pt-8 pb-10 text-sm md:px-20 md:pt-[39px] md:pb-[57px]"
+>
+  <!-- Grid pattern, clipped to the area of the Figma mask -->
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute top-[-87px] left-[-180px] h-[1112.647px] w-[1259.868px] overflow-hidden"
+  >
+    <Pattern class="absolute top-[75.12px] left-[-62.29px]" />
+  </div>
+
+  <a
+    href="/"
+    aria-label="Home"
+    class="relative inline-block h-[82px] md:-ml-5 md:h-[109.6875px] [&>svg]:h-full [&>svg]:w-auto"
+  >
+    <Logo aria-hidden="true" />
+  </a>
+
+  <div
+    class="relative mt-16 flex flex-col gap-10 md:mt-[308px] md:flex-row md:items-end md:justify-between"
+  >
+    <div class="flex flex-col gap-10 sm:flex-row sm:items-end sm:gap-20">
+      <address class="flex flex-col gap-6 leading-[1.4] not-italic">
+        <div class="flex gap-5">
+          <Dot aria-hidden="true" class="mt-[7px] shrink-0" />
+          <a href="mailto:deiddaforbusiness@gmail.com" class={linkClass}>
+            deiddaforbusiness@gmail.com
+          </a>
+        </div>
+        <div class="flex gap-5">
+          <Dot aria-hidden="true" class="mt-[7px] shrink-0" />
+          <p>Based in Italy</p>
+        </div>
+      </address>
+
+      <ul class="ml-[26px] flex gap-10 leading-[1.4] sm:ml-0">
+        {
+          socials.map(({ label, href }) => (
+            <li>
+              <a
+                href={href}
+                target="_blank"
+                rel="noopener"
+                class:list={["flex items-start gap-1", linkClass]}
+              >
+                {label}
+                <ArrowUpRight aria-hidden="true" class="mt-[7px]" />
+              </a>
+            </li>
+          ))
+        }
+      </ul>
     </div>
+
+    <div
+      class="flex flex-col gap-4 leading-[1.5] font-medium sm:flex-row sm:items-end sm:gap-[74px]"
+    >
+      {
+        legal.map(({ label, href }) => (
+          <a href={href} class={linkClass}>
+            {label}
+          </a>
+        ))
+      }
+      <p>© {new Date().getFullYear()} — Copyright</p>
+    </div>
+  </div>
 </footer>
