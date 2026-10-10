@@ -1,13 +1,77 @@
 ---
-const h1_text = "I'm Riccardo Deidda";
-const lastname = "Software Engineer, AI & Web Developer";
+import Arrow from "./../assets/hero/arrow.svg";
+import CodeBadge from "./../assets/hero/code-badge.svg";
+import Connection from "./../assets/hero/connection.svg";
+import Pattern from "./../assets/hero/pattern.svg";
+import WavingHand from "./../assets/hero/waving-hand.svg";
+import CodeCard from "./CodeCard.astro";
+import TechCarousel from "./TechCarousel.astro";
 ---
 
-<div class="relative shadow-xl h-dvh bg-hero bg-cover bg-top-left">
-    <div class="h-full w-full flex flex-col justify-center">
-        <div class="flex flex-col items-end mx-auto">
-            <h1 class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-white tracking-widest font-light">{h1_text}</h1>
-            <p class="text-base sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-white tracking-wide font-thin">{lastname}</p>
-        </div>
+<section
+  class="bg-surface font-inter relative flex flex-col items-center overflow-hidden px-6 pt-[140px] pb-[67px] text-center md:pt-[180px] lg:pt-[261px]"
+>
+  <Pattern
+    aria-hidden="true"
+    class="pointer-events-none absolute top-[209px] left-1/2 -translate-x-1/2 opacity-60"
+  />
+  <CodeCard class="absolute top-[202px] left-[-79px] hidden lg:flex" />
+  <CodeCard class="absolute top-[854px] right-[-52px] hidden lg:flex" />
+
+  <WavingHand aria-hidden="true" class="relative -scale-x-100" />
+  <p
+    class="text-soft relative mt-[19px] text-base leading-[1.2] tracking-[4px] uppercase"
+  >
+    Hello everyone
+  </p>
+
+  <div class="relative mt-[46px] w-full max-w-[958px]">
+    <div
+      aria-hidden="true"
+      class="absolute top-[-36px] right-[19px] hidden size-[62.164px] lg:block"
+    >
+      <div class="absolute inset-0 flex items-center justify-center">
+        <div class="bg-peach size-[49.123px] rotate-[18.49deg] rounded-md"></div>
+      </div>
+      <Connection class="absolute top-[16.1px] left-[13.2px]" />
     </div>
-</div>
+    <div
+      aria-hidden="true"
+      class="absolute top-[160px] left-[26px] hidden lg:block"
+    >
+      <CodeBadge />
+    </div>
+
+    <h1
+      class="p-2.5 text-[40px] leading-none font-bold tracking-[-0.05em] text-white md:text-[56px] lg:text-[72px]"
+    >
+      Software Engineer with <br class="hidden lg:block" />a focus on{" "}
+      <span class="text-lavender">AI</span> and Web{" "}
+      <span class="text-lavender">Development</span>
+    </h1>
+    <p
+      class="font-lato text-soft mt-6 text-xl leading-[1.2] md:text-2xl"
+    >
+      Ready to build something new?
+    </p>
+  </div>
+
+  <a
+    href="/project"
+    class="bg-violet relative mt-[44px] flex items-center justify-center gap-2.5 rounded-[14px] px-10 py-[22px] text-lg leading-[1.2] font-medium tracking-[-0.48px] text-white transition-opacity hover:opacity-90"
+  >
+    View my projects
+    <span class="flex size-[11px] items-center justify-center">
+      <Arrow aria-hidden="true" class="shrink-0 -rotate-45" />
+    </span>
+  </a>
+
+  <p
+    class="text-soft relative mt-24 text-lg leading-[1.2] lg:mt-[218px]"
+  >
+    Technologies I use
+  </p>
+  <div class="relative mt-7 flex w-full justify-center">
+    <TechCarousel />
+  </div>
+</section>

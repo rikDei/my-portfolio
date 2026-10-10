@@ -1,0 +1,45 @@
+---
+import AstroLogo from "./../assets/hero/astro.svg";
+import FastApi from "./../assets/hero/fastapi.svg";
+import Git from "./../assets/hero/git.svg";
+import Python from "./../assets/hero/python.svg";
+import React from "./../assets/hero/react.svg";
+import TypeScript from "./../assets/hero/typescript.svg";
+
+const technologies = [
+  { name: "FastAPI", Icon: FastApi, class: "" },
+  { name: "Python", Icon: Python, class: "" },
+  { name: "React", Icon: React, class: "mt-[2.58px]" },
+  { name: "Astro", Icon: AstroLogo, class: "mt-[3.86px]" },
+  { name: "TypeScript", Icon: TypeScript, class: "mt-[3.22px]" },
+  { name: "Git", Icon: Git, class: "mt-[3.86px]" },
+];
+---
+
+<div
+  class="w-full max-w-[642px] overflow-hidden py-[52px] [mask-image:linear-gradient(to_right,transparent,black_15%,black_85%,transparent)]"
+>
+  <!--
+    Seamless CSS-only loop: the track is translated by -50% (two groups), so the
+    remaining half (two groups, ~1098px) always covers the 642px window.
+  -->
+  <div class="animate-marquee flex w-max motion-reduce:animate-none">
+    {
+      [false, true, true, true].map((duplicate) => (
+        <ul
+          class="flex shrink-0 items-start gap-7 pr-7"
+          aria-hidden={duplicate ? "true" : undefined}
+        >
+          {technologies.map(({ name, Icon, class: className }) => (
+            <li class:list={["shrink-0", className]}>
+              <Icon
+                role="img"
+                aria-label={duplicate ? undefined : name}
+              />
+            </li>
+          ))}
+        </ul>
+      ))
+    }
+  </div>
+</div>

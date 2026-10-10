@@ -1,32 +1,121 @@
 ---
-const projects_url = "https://github.com/rikDei?tab=repositories"
+import Arrow from "./../assets/hero/arrow.svg";
+import Logo from "./../assets/Logo.svg";
+
+const links = [
+  { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
+  { label: "Project", href: "/project" },
+];
+
+// Static build: the active page is resolved at build time from the served URL.
+const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
+const isActive = (href: string) => pathname === href;
 ---
 
-<nav class="bg-linear-90 from-zinc-900 from-5% to-black text-white flex flex-row place-content-around pt-4 pb-4 text-bold font-bold tracking-wide fixed top-0 w-lvw z-10">
-    <div class="">
-        <a href="/index"
-            ><svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="size-10"
+<nav
+  class="font-inter bg-surface fixed top-0 z-10 w-full text-base font-medium tracking-[-0.48px] text-white"
+>
+  <div
+    class="flex items-center justify-between px-6 py-4 md:grid md:grid-cols-[1fr_auto_1fr] md:px-[70px] md:py-[26px]"
+  >
+    <a href="/" aria-label="Home" class="justify-self-start">
+      <Logo aria-hidden="true" />
+    </a>
+
+    <ul class="hidden gap-8 md:flex">
+      {
+        links.map(({ label, href }) => (
+          <li>
+            <a
+              href={href}
+              aria-current={isActive(href) ? "page" : undefined}
+              class:list={[
+                "relative block leading-[1.1] transition-colors",
+                isActive(href) ? "text-white" : "text-muted hover:text-white",
+              ]}
             >
-                <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
-                ></path>
-                <title>Home button</title>
-            </svg>
-        </a>
+              {label}
+              {isActive(href) && (
+                <span class="absolute top-full left-1/2 mt-4 size-[7px] -translate-x-1/2 rounded-full bg-white" />
+              )}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <a
+      href="/contact"
+      aria-current={isActive("/contact") ? "page" : undefined}
+      class="group border-spin text-muted relative hidden justify-self-end overflow-hidden rounded-[35px] py-3 pr-7 pl-[29px] leading-[1.1] transition-colors hover:text-white focus-visible:text-white md:block"
+    >
+      <span
+        class="block transition-transform duration-300 group-hover:-translate-x-3 group-focus-visible:-translate-x-3"
+      >
+        Contact
+      </span>
+      <span
+        aria-hidden="true"
+        class="absolute top-1/2 right-4 -translate-x-2 -translate-y-1/2 opacity-0 transition duration-300 group-hover:translate-x-0 group-hover:opacity-100 group-focus-visible:translate-x-0 group-focus-visible:opacity-100"
+      >
+        <Arrow />
+      </span>
+    </a>
+
+    <!-- Mobile: CSS-only drawer from the left, driven by the checkbox peer -->
+    <input id="nav-toggle" type="checkbox" class="peer sr-only md:hidden" />
+    <label
+      for="nav-toggle"
+      aria-label="Apri menu"
+      class="flex cursor-pointer flex-col gap-1.5 rounded p-2 peer-focus-visible:ring-2 peer-focus-visible:ring-lavender md:hidden"
+    >
+      <span class="block h-0.5 w-6 bg-white"></span>
+      <span class="block h-0.5 w-6 bg-white"></span>
+      <span class="block h-0.5 w-6 bg-white"></span>
+    </label>
+    <label
+      for="nav-toggle"
+      aria-hidden="true"
+      class="pointer-events-none fixed inset-0 bg-black/60 opacity-0 transition-opacity peer-checked:pointer-events-auto peer-checked:opacity-100 md:hidden"
+    ></label>
+    <div
+      class="fixed inset-y-0 left-0 flex w-64 -translate-x-full flex-col gap-10 bg-surface px-6 py-6 transition-transform peer-checked:translate-x-0 md:hidden"
+    >
+      <div class="flex items-center justify-between">
+        <a href="/" aria-label="Home"><Logo aria-hidden="true" /></a>
+        <label
+          for="nav-toggle"
+          aria-label="Chiudi menu"
+          class="cursor-pointer p-2 text-2xl leading-none text-muted hover:text-white"
+          >&times;</label
+        >
+      </div>
+      <ul class="flex flex-col gap-6">
+        {
+          [...links, { label: "Contact", href: "/contact" }].map(
+            ({ label, href }) => (
+              <li>
+                <a
+                  href={href}
+                  aria-current={isActive(href) ? "page" : undefined}
+                  class:list={[
+                    "flex items-center gap-3 leading-[1.1] transition-colors",
+                    isActive(href)
+                      ? "text-white"
+                      : "text-muted hover:text-white",
+                  ]}
+                >
+                  {label}
+                  {isActive(href) && (
+                    <span class="size-[7px] rounded-full bg-white" />
+                  )}
+                </a>
+              </li>
+            ),
+          )
+        }
+      </ul>
     </div>
-    <div class="flex flex-col place-content-center">
-        <ul class="flex flex-row gap-5">
-            <li><a href="#about">About</a></li>
-            <li><a href="#technologies">Tecnologies</a></li>
-            <li><a href={projects_url}>Projects</a></li>
-        </ul>
-    </div>
+  </div>
 </nav>

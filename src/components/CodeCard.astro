@@ -1,0 +1,50 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+
+const lines = [
+  "class Developer:",
+  "    def __init__(self, name, skills): ",
+  "        self.name = name",
+  "	   self.skills = skills",
+  "​",
+  "    def build(self, idea):",
+  "        return { ",
+  '    "idea": idea, ',
+  '    "status": "building", ',
+  '    "with": self.skills ',
+  "    }",
+];
+---
+
+<div
+  aria-hidden="true"
+  class:list={[
+    "pointer-events-none flex h-[207px] w-[297px] items-center justify-center",
+    className,
+  ]}
+>
+  <div
+    class="flex h-[179px] w-[280px] shrink-0 -rotate-6 items-center justify-center rounded-lg bg-[rgba(60,60,60,0.2)] pt-5 pr-[33px] pb-[19px] pl-[30px]"
+  >
+    <ol
+      class="font-lato h-[140px] w-[217px] list-decimal text-left text-xs leading-[1.2] text-[#585858]"
+    >
+      {
+        lines.map((line, i) => (
+          <li
+            class:list={[
+              "ms-[18px] whitespace-pre-wrap",
+              i === 0 ? "text-[#737373]" : "text-[#b1b1b1]",
+            ]}
+          >
+            {line}
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</div>
