@@ -1,48 +1,183 @@
 ---
-import astroImg from "./../assets/astro.svg";
-import reactImg from "./../assets/React.svg";
-import pythonImg from "./../assets/Python.svg";
+import AstroLogo from "./../assets/hero/astro.svg";
+import TypeScript from "./../assets/hero/typescript.svg";
+import Arrows from "./../assets/technologies/arrows.svg";
+import BadgeIcon from "./../assets/technologies/badge-icon.svg";
+import Fingerprint from "./../assets/technologies/fingerprint.svg";
+import FastApi from "./../assets/technologies/fastapi.svg";
+import Git from "./../assets/technologies/git.svg";
+import Python from "./../assets/technologies/python.svg";
+import React from "./../assets/technologies/react.svg";
 import TechnolgyCard from "./TechnolgyCard.astro";
 
 const cards = [
-    {
-        name: "Astro",
-        icon: astroImg,
-        description: "Build fast, content-focused websites.",
-    },
-    {
-        name: "React",
-        icon: reactImg,
-        description:
-            "Craft dynamic UIs and web magic with React's component-based sorcery.",
-    },
-    {
-        name: "Python",
-        icon: pythonImg,
-        description:
-            "From dynamic UIs to AI-powered web magic, I craft flexible solutions.",
-    },
+  {
+    name: "FastAPI",
+    Icon: FastApi,
+    description:
+      "Craft fast, modern APIs with Python, built for performance and simplicity.",
+  },
+  {
+    name: "Python",
+    Icon: Python,
+    description:
+      "From AI models to backend services, flexible solutions for every problem.",
+  },
+  {
+    name: "Astro",
+    Icon: AstroLogo,
+    description: "Build fast, content-focused websites that ship less JavaScript.",
+  },
+  {
+    name: "React",
+    Icon: React,
+    description:
+      "Craft dynamic UIs with React's component-based approach to the web.",
+  },
+  {
+    name: "TypeScript",
+    Icon: TypeScript,
+    description:
+      "Type-safe JavaScript that keeps large codebases reliable and maintainable.",
+  },
+  {
+    name: "Git",
+    Icon: Git,
+    description:
+      "Version control for clean collaboration and a safe history of every change.",
+  },
 ];
 ---
 
-<div
-    id="technologies"
-    class="bg-linear-45 from-gray-900 to-zinc-950 w-full h-300 md:h-160 flex flex-col gap-y-16 place-content-center-safe"
+<section
+  id="technologies"
+  class="bg-snow relative overflow-hidden py-20 lg:pt-[120px] lg:pb-[172px]"
 >
-    <div class="mx-auto">
-        <h2 class="text-white font-code">Technologies I use</h2>
-    </div>
+  <!--
+    Decorative badges: Figma positions (relative to the 1440px frame) on lg+,
+    tucked into the section's top corners on smaller screens.
+  -->
+  <div
+    aria-hidden="true"
+    class="absolute top-6 right-6 flex size-[58.631px] scale-75 items-center justify-center lg:top-[118px] lg:right-auto lg:left-[calc(50%+335px)] lg:scale-100"
+  >
     <div
-        class="flex flex-col md:flex-row gap-20 place-content-center-safe mx-auto"
+      class="bg-periwinkle flex size-[51px] rotate-[9.38deg] rounded-[4.781px] pt-[9.563px] pr-[8.766px] pb-[8.766px] pl-[9.563px]"
     >
-        {
-            cards.map((card) => (
-                <TechnolgyCard
-                    icon={card.icon}
-                    name={card.name}
-                    description={card.description}
-                />
-            ))
-        }
+      <BadgeIcon />
     </div>
-</div>
+  </div>
+  <div
+    aria-hidden="true"
+    class="absolute top-6 left-6 flex size-[60.95px] scale-75 items-center justify-center lg:top-[261.72px] lg:left-[calc(50%-406px)] lg:scale-100"
+  >
+    <div
+      class="bg-lime flex -rotate-[12.6deg] rounded-[4.691px] px-[11.727px] pt-[8.6px] pb-[9.382px]"
+    >
+      <Fingerprint />
+    </div>
+  </div>
+
+  <div class="mx-auto flex w-full max-w-[1064px] flex-col items-center px-6 lg:px-0">
+    <h2
+      class="font-inter text-ink-strong text-center text-[32px] leading-[1.2] font-bold tracking-[0.48px] uppercase sm:text-4xl lg:text-[48px]"
+    >
+      Technologies <span class="text-lavender whitespace-nowrap">I use</span>
+    </h2>
+
+    <div class="font-lato text-ink mt-[25px] max-w-[710px] text-center leading-[1.2]">
+      <p class="text-xl lg:text-2xl">
+        Technologies I use to build better digital products.
+      </p>
+      <p class="mt-[21.6px] text-lg">
+        From modern web experiences to AI-powered solutions, I choose the right
+        tools <br class="hidden lg:block" />to make every project fast, reliable
+        and scalable.
+      </p>
+    </div>
+  </div>
+
+  <!--
+    Mobile: one card per slide, arrows on either side of it.
+    Desktop: arrows above, right-aligned with the 1064px content column; the
+    track bleeds to the right edge while its first card lines up with the
+    column (+16px, as in the design).
+  -->
+  <div class="relative mt-6 flex flex-col md:mt-10 lg:mt-[53px]">
+    <div
+      class="max-md:contents md:mr-[max(1.5rem,calc(50%-532px))] md:flex md:gap-[9px] md:self-end"
+    >
+      <button
+        type="button"
+        data-carousel-prev
+        aria-controls="technologies-track"
+        aria-label="Previous technology"
+        class="size-12 cursor-pointer overflow-hidden rounded-full transition-opacity disabled:cursor-default disabled:opacity-30 max-md:absolute max-md:top-1/2 max-md:left-1 max-md:z-10 max-md:-translate-y-1/2 max-md:scale-75"
+      >
+        <Arrows aria-hidden="true" />
+      </button>
+      <button
+        type="button"
+        data-carousel-next
+        aria-controls="technologies-track"
+        aria-label="Next technology"
+        class="size-12 cursor-pointer overflow-hidden rounded-full transition-opacity disabled:cursor-default disabled:opacity-30 max-md:absolute max-md:top-1/2 max-md:right-1 max-md:z-10 max-md:-translate-y-1/2 max-md:scale-75"
+      >
+        <Arrows aria-hidden="true" class="-ml-[57px]" />
+      </button>
+    </div>
+
+    <ul
+      id="technologies-track"
+      data-carousel-track
+      class="flex snap-x snap-mandatory overflow-x-auto py-8 [scrollbar-width:none] md:mt-9 md:gap-8 md:scroll-px-[max(1.5rem,calc(50%-516px))] md:px-[max(1.5rem,calc(50%-516px))] [&::-webkit-scrollbar]:hidden"
+    >
+      {
+        cards.map((card) => (
+          <li class="flex w-full shrink-0 snap-center justify-center px-14 md:w-auto md:snap-start md:px-0">
+            <TechnolgyCard
+              Icon={card.Icon}
+              name={card.name}
+              description={card.description}
+            />
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<script>
+  const section = document.getElementById("technologies");
+  const track = section?.querySelector<HTMLElement>("[data-carousel-track]");
+  const prev = section?.querySelector<HTMLButtonElement>("[data-carousel-prev]");
+  const next = section?.querySelector<HTMLButtonElement>("[data-carousel-next]");
+
+  if (track && prev && next) {
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    const step = () => {
+      const card = track.firstElementChild as HTMLElement | null;
+      const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+      return card ? card.offsetWidth + gap : track.clientWidth;
+    };
+
+    const scroll = (direction: 1 | -1) =>
+      track.scrollBy({
+        left: direction * step(),
+        behavior: reduceMotion.matches ? "auto" : "smooth",
+      });
+
+    const update = () => {
+      const max = track.scrollWidth - track.clientWidth;
+      prev.disabled = track.scrollLeft <= 1;
+      next.disabled = track.scrollLeft >= max - 1;
+    };
+
+    prev.addEventListener("click", () => scroll(-1));
+    next.addEventListener("click", () => scroll(1));
+    track.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    update();
+  }
+</script>
